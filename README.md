@@ -10,7 +10,7 @@ I built it while completing a short course at **WorldQuant University**.
 | Lesson | Topic | Status |
 |--------|-------|--------|
 | 1 | Getting to know the data: load, clean, combine, summarize | ✅ Done |
-| 2 | Visualizing the data | Coming soon |
+| 2 | Visualizing the data | ✅ Done |
 | 3 | Correlation | Coming soon |
 | 4 | Price per square meter and final conclusion | Coming soon |
 
@@ -34,6 +34,33 @@ dataset with `pd.concat()`, saved it, and ran `.describe()` on price and area.
 - **`.assign()` with `lambda`:** making or changing columns without breaking the chain
 - **`pd.concat()`** and why `ignore_index=True` matters
 - **Mean vs median:** housing prices are right-skewed, so a few expensive homes pull the mean up
+
+## Lesson 2: Visualizing Housing Data
+
+Summary numbers can hide a lot, so I plotted the data to see what is really going on.
+
+| Chart | What I used it for | What it showed |
+|-------|--------------------|----------------|
+| Histograms | Shape of price and area | Both are right-skewed. A few very expensive and very large properties pull the mean up |
+| Boxplots | Compare property types and the top 3 states | Typical prices differ by state, and each state has a different spread of prices |
+| Scatterplot | Size vs price | Bigger properties usually cost more, but there is a lot of scatter |
+| Outlier filter | Remove the cheapest 5% and the top 10% of prices, and the top 10% of areas | The main pattern becomes easier to see |
+| Regression line (seaborn) | Show the average trend | Price goes up with area, but the confidence band is wide |
+| Bar chart (groupby) | Mean price per state | Distrito Federal has the highest mean price |
+| Small multiples | Size vs price in each state | The size-price link is different in each state |
+
+### What I learned
+- Always plot the data before trusting summary numbers
+- Use Matplotlib's explicit style: `fig, ax = plt.subplots()`
+- How to read a boxplot (median, box, whiskers, outliers)
+- Cutting outliers with quantiles, and why I should say that I did it
+- `groupby()` splits the data into groups, calculates for each, and joins the results
+- Small multiples show how a relationship changes between groups
+- The confidence band shows how sure the trendline is
+
+### Early finding
+Location clearly matters. Prices differ a lot between states, and the size-price relationship
+is not the same in every state. I test this with numbers in Lessons 3 and 4.
 
 ## Tools used
 - Python 3
