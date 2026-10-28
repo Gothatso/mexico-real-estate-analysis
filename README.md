@@ -12,7 +12,7 @@ I built it while completing a short course at **WorldQuant University**.
 | 1 | Getting to know the data: load, clean, combine, summarize | ✅ Done |
 | 2 | Visualizing the data | ✅ Done |
 | 3 | Correlation | ✅ Done |
-| 4 | Price per square meter and final conclusion | Coming soon |
+| 4 | Price per square meter and final conclusion | ✅ Done |
 
 ## Lesson 1: Getting to Know the Data
 
@@ -87,6 +87,50 @@ Charts showed a link between size and price. Here I measure it with numbers.
 ### Finding
 Size is related to price, but not equally everywhere. Location changes how well size
 predicts price. I test this further in Lesson 4.
+
+## Lesson 4: Price per Square Meter and Location Effects
+
+Total price depends a lot on size. To compare locations fairly, I made a new column:
+`price_per_m2 = price_usd / area_m2`.
+
+| Step | What I did | Result |
+|------|------------|--------|
+| Price per m² histogram | Looked at its shape, with the median marked | Right-skewed. Median is $___ per m² |
+| Stats by state | Mean, median and spread for each state | Most expensive: ___. Least expensive: ___ |
+| Boxplot, top 3 vs bottom 3 states | Compared the extremes | ___ |
+| Variance split | Between-state vs within-state variation in price | Between: ___%, Within: ___% |
+| Property type | Apartments vs houses per m² | Apartments: $___ per m². Houses: $___ per m² |
+| State × property type | Median per m² for each combination (at least 5 listings) | ___ |
+
+### What I learned
+- Making a new column (`price_per_m2`) lets me compare properties of different sizes
+- Use the median to describe skewed data
+- `groupby().agg()` for several statistics at once
+- Splitting variation into "between groups" and "within groups"
+- Small groups give unreliable results, so I filtered out groups with fewer than 5 listings
+- How to turn charts and tables into a clear conclusion
+
+## Conclusion: size or location?
+
+Both matter, but my results point to **location** as the bigger driver of price.
+
+- The country-wide area and price correlation is r = ___. Size helps, but leaves a lot unexplained.
+- The area and price link changes from state to state (Lesson 3).
+- Between-state differences make up ___% of the price variation, compared with ___% within states.
+- Price per m² is very different between states: the most expensive state has a median of $___,
+  while the least expensive has $___.
+
+### Limits of this analysis
+- I only have the **state**, not the neighborhood. Location inside a state matters too.
+- The variance split is a **simple method**, not a full statistical test (such as ANOVA).
+- The data has no year built, condition or amenities, and no sale dates.
+- A fixed rate of 19 pesos per dollar was used for file 2.
+- Correlation does not prove cause.
+
+### Ideas for next steps
+- Try the log of price to reduce skew
+- Use Spearman correlation for the curved link between area and price per m²
+- Build a regression model with state, property type and area together
 
 ## Tools used
 - Python 3
