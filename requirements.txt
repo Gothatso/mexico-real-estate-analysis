@@ -1,5 +1,6 @@
-   pandas
-   jupyter
-   ipykernel
-   matplotlib
-   seaborn
+pandas
+numpy
+jupyter
+ipykernel
+matplotlib>=3.9
+seaborn

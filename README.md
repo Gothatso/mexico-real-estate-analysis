@@ -11,7 +11,7 @@ I built it while completing a short course at **WorldQuant University**.
 |--------|-------|--------|
 | 1 | Getting to know the data: load, clean, combine, summarize | ✅ Done |
 | 2 | Visualizing the data | ✅ Done |
-| 3 | Correlation | Coming soon |
+| 3 | Correlation | ✅ Done |
 | 4 | Price per square meter and final conclusion | Coming soon |
 
 ## Lesson 1: Getting to Know the Data
@@ -61,6 +61,32 @@ Summary numbers can hide a lot, so I plotted the data to see what is really goin
 ### Early finding
 Location clearly matters. Prices differ a lot between states, and the size-price relationship
 is not the same in every state. I test this with numbers in Lessons 3 and 4.
+
+## Lesson 3: Correlation and Variable Relationships
+
+Charts showed a link between size and price. Here I measure it with numbers.
+
+| Step | What I did | Result |
+|------|------------|--------|
+| Country-wide correlation | Pearson correlation of area and price | r = ___ |
+| Correlation matrix + heatmap | Checked all number columns at once | Area and price have the strongest link |
+| Correlation by state | Split the data by state, then calculated r for each | The link is strong in some states and weak in others |
+| Correlation by property type | Houses vs apartments | Houses: r = ___, Apartments: r = ___ |
+| Price per m² | Made a new column: price ÷ area | Larger properties tend to have a lower price per m² |
+
+### What I learned
+- Pearson correlation (r) gives a number from -1 to 1 for how strongly two things move together
+- Correlation does not mean one thing causes the other
+- Pearson r only measures straight-line relationships
+- A heatmap makes a correlation matrix easy to read
+- One country-wide number can hide big differences between states (Simpson's Paradox)
+- States with very few listings can give misleading correlations
+- Feature engineering: making a new column (`price_per_m2`) can show new patterns
+- `groupby`, `.iloc`, and `.xs()` for pulling one number from a grouped correlation
+
+### Finding
+Size is related to price, but not equally everywhere. Location changes how well size
+predicts price. I test this further in Lesson 4.
 
 ## Tools used
 - Python 3
